@@ -36,13 +36,13 @@ public class PlayerMovement : MonoBehaviour
     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     RaycastHit hit;
 
-    if (Physics.Raycast(ray, out hit, float.NegativeInfinity, rotationMask))
+    if (Physics.Raycast(ray, out hit, float.PositiveInfinity, rotationMask))
     {
       Vector3 difference = hit.point - rigidbody.position;
 
       Vector3 flatten = new Vector3(
         difference.x, 0f,
-        difference.y
+        difference.z
       );
 
       Quaternion target = Quaternion.LookRotation(flatten);
