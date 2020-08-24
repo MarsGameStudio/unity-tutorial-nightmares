@@ -12,7 +12,7 @@ public class EnemyHealth : MonoBehaviour
   [SerializeField] private float maxHealth = 100f;
   [SerializeField] private ParticleSystem hitParticle;
   [SerializeField] private float sinkSpeed = 2.5f;
-  [SerializeField] private float score = 10f;
+  [SerializeField] private int score = 10;
 
   [Header("SFX: ")]
   [SerializeField] private AudioSource audioSource;
@@ -51,6 +51,8 @@ public class EnemyHealth : MonoBehaviour
 
   private void Death()
   {
+    ScoreManager.score += score;
+
     animatorController.SetTrigger("isDead");
 
     audioSource.clip = deathSound;
